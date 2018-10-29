@@ -154,7 +154,6 @@ pub struct Epic {
   started : bool,
   started_at : Option<DateTime<Utc>>,
   started_at_override : Option<DateTime<Utc>>,
-  state : String,
   stats : EpicStats,
   updated_at : Option<DateTime<Utc>>,
 }
@@ -597,16 +596,334 @@ pub struct WorkflowState {
 
 #[derive(Clone, Deserialize, Serialize, Debug, PartialEq, Eq)]
 pub enum StoryType {
-  bug,
-  chore,
-  feature,
+  #[serde(rename="bug")]
+  Bug,
+  #[serde(rename="chore")]
+  Chore,
+  #[serde(rename="feature")]
+  Feature,
 }
 
 #[derive(Clone, Deserialize, Serialize, Debug, PartialEq, Eq)]
 pub enum StoryLinkType {
-  blocks,
-  duplicates,
+  #[serde(rename="blocks")]
+  Blocks,
+  #[serde(rename="duplicates")]
+  Duplicates,
   #[serde(rename="relates to")]
-  relates_to,
+  RelatesTo,
 }
 
+#[derive(Clone, Deserialize, Serialize, Debug, PartialEq, Eq)]
+pub enum CategoryType {
+  #[serde(rename="milestone")]
+  Milestone,
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug, PartialEq, Eq)]
+pub enum FileIntegrationType {
+  #[serde(rename="box")]
+  Box,
+  #[serde(rename="dropbox")]
+  Dropbox,
+  #[serde(rename="google")]
+  Google,
+  #[serde(rename="onedrive")]
+  OneDrive,
+  #[serde(rename="url")]
+  Url,
+}
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateCategory {
+  color : Option<String>
+  external_id : Option<String>
+  name : String
+  category_type : types::CategoryType
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateCategory {
+  archived : Option<bool>
+  color : Option<String>
+  name : Option<String>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateEpic {
+  completed_at_override : Option<DateTime<Utc>>
+  created_at : Option<DateTime<Utc>>
+  deadline : Option<DateTime<Utc>>
+  description : Option<String>
+  epic_state_id : Option<u32>
+  external_id : Option<String>
+  follower_ids : Option<Vec<Uuid>>
+  labels : Option<Vec<CreateLabelParams>>
+  milestone_id : Option<u32>
+  name : String
+  owner_ids : Option<Vec<Uuid>>
+  requested_by_id : Option<Uuid>
+  started_at_override : Option<DateTime<Utc>>
+  updated_at : Option<DateTime<Utc>>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateEpic {
+  after_id : Option<u32>
+  archived : Option<bool>
+  before_id : Option<u32>
+  completed_at_override : Option<DateTime<Utc>>
+  deadline : Option<DateTime<Utc>>
+  description : Option<String>
+  epic_state_id : Option<u32>
+  follower_ids : Option<Vec<Uuid>>
+  labels : Option<Vec<CreateLabelParams>>
+  milestone_id : Option<u32>
+  name : Option<String>
+  owner_ids : Option<Vec<Uuid>>
+  requested_by_id : Option<Uuid>
+  started_at_override : Option<DateTime<Utc>>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateEpicComment {
+  author_id : Option<Uuid>
+  created_at : Option<DateTime<Utc>>
+  external_id : Option<String>
+  text : String
+  updated_at : Option<DateTime<Utc>>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateEpicCommentComment {
+  external_id : Option<String>
+  text : String
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateEpicComment {
+  text : String
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateFile {
+  created_at : Option<DateTime<Utc>>
+  description : Option<String>
+  external_id : Option<String>
+  name : Option<String>
+  updated_at : Option<DateTime<Utc>>
+  uploader_id : Option<Uuid>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateLabel {
+  color : Option<String>
+  external_id : Option<String>
+  name : String
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateLabel {
+  archived : Option<bool>
+  color : Option<String>
+  name : Option<String>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateLinkedFile {
+  content_type : Option<String>
+  description : Option<String>
+  name : String
+  size : Option<u32>
+  story_id : Option<u32>
+  thumbnail_url : Option<String>
+  file_integration_type : types::FileIntegrationType
+  uploader_id : Option<Uuid>
+  url : String
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateLinkedFile {
+  description : Option<String>
+  name : Option<String>
+  size : Option<String>
+  thumbnail_url : Option<String>
+  file_integration_type : Option<types::FileIntegrationType>
+  uploader_id : Option<Uuid>
+  url : Option<String>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateMilestone {
+  categories : Option<Vec<CreateCategoryParams>>
+  completed_at_override : Option<DateTime<Utc>>
+  description : Option<String>
+  name : String
+  started_at_override : Option<DateTime<Utc>>
+  state : Option<Enum (done, in progress, to do)>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateMilestone {
+  after_id : Option<u32>
+  before_id : Option<u32>
+  categories : Option<Vec<CreateCategoryParams>>
+  completed_at_override : Option<DateTime<Utc>>
+  description : Option<String>
+  name : Option<String>
+  started_at_override : Option<DateTime<Utc>>
+  state : Option<Enum (done, in progress, to do)>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateProject {
+  abbreviation : Option<String>
+  color : Option<String>
+  created_at : Option<DateTime<Utc>>
+  description : Option<String>
+  external_id : Option<String>
+  follower_ids : Option<Vec<Uuid>>
+  iteration_length : Option<u32>
+  name : String
+  team_id : Option<u32>
+  updated_at : Option<DateTime<Utc>>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateProject {
+  abbreviation : Option<String>
+  archived : Option<bool>
+  color : Option<String>
+  days_to_thermometer : Option<u32>
+  description : Option<String>
+  follower_ids : Option<Vec<Uuid>>
+  name : Option<String>
+  show_thermometer : Option<bool>
+  team_id : Option<u32>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct SearchStories {
+  page_size : Option<u32>
+  query : String
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateStory {
+  comments : Option<Vec<CreateCommentParams>>
+  completed_at_override : Option<DateTime<Utc>>
+  created_at : Option<DateTime<Utc>>
+  deadline : Option<DateTime<Utc>>
+  description : Option<String>
+  epic_id : Option<u32>
+  estimate : Option<u32>
+  external_id : Option<String>
+  file_ids : Option<Vec<u32>>
+  follower_ids : Option<Vec<Uuid>>
+  labels : Option<Vec<CreateLabelParams>>
+  linked_file_ids : Option<Vec<u32>>
+  name : String
+  owner_ids : Option<Vec<Uuid>>
+  project_id : u32
+  requested_by_id : Option<Uuid>
+  started_at_override : Option<DateTime<Utc>>
+  story_links : Option<Vec<CreateStoryLinkParams>>
+  story_type : Option<types::StoryType>
+  tasks : Option<Vec<CreateTaskParams>>
+  updated_at : Option<DateTime<Utc>>
+  workflow_state_id : Option<u32>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateMultipleStories {
+  stories : Vec<CreateStoryParams>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateMultipleStories {
+  after_id : Option<u32>
+  archived : Option<bool>
+  deadline : Option<DateTime<Utc>>
+  epic_id : Option<u32>
+  estimate : Option<u32>
+  follower_ids_add : Option<Vec<Uuid>>
+  follower_ids_remove : Option<Vec<Uuid>>
+  labels_add : Option<Vec<CreateLabelParams>>
+  labels_remove : Option<Vec<CreateLabelParams>>
+  owner_ids_add : Option<Vec<Uuid>>
+  owner_ids_remove : Option<Vec<Uuid>>
+  project_id : Option<u32>
+  requested_by_id : Option<Uuid>
+  story_ids : Vec<u32>
+  story_type : Option<types::StoryType>
+  workflow_state_id : Option<u32>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct DeleteMultipleStories {
+  story_ids : Vec<u32>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateStory {
+  after_id : Option<u32>
+  archived : Option<bool>
+  before_id : Option<u32>
+  branch_ids : Option<Vec<u32>>
+  commit_ids : Option<Vec<u32>>
+  completed_at_override : Option<DateTime<Utc>>
+  deadline : Option<DateTime<Utc>>
+  description : Option<String>
+  epic_id : Option<u32>
+  estimate : Option<u32>
+  file_ids : Option<Vec<u32>>
+  follower_ids : Option<Vec<Uuid>>
+  labels : Option<Vec<CreateLabelParams>>
+  linked_file_ids : Option<Vec<u32>>
+  name : Option<String>
+  owner_ids : Option<Vec<Uuid>>
+  project_id : Option<u32>
+  requested_by_id : Option<Uuid>
+  started_at_override : Option<DateTime<Utc>>
+  story_type : Option<types::StoryType>
+  workflow_state_id : Option<u32>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateComment {
+  author_id : Option<Uuid>
+  created_at : Option<DateTime<Utc>>
+  external_id : Option<String>
+  text : String
+  updated_at : Option<DateTime<Utc>>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateComment {
+  text : String
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateTask {
+  complete : Option<bool>
+  created_at : Option<DateTime<Utc>>
+  description : String
+  external_id : Option<String>
+  owner_ids : Option<Vec<Uuid>>
+  updated_at : Option<DateTime<Utc>>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct UpdateTask {
+  after_id : Option<u32>
+  before_id : Option<u32>
+  complete : Option<bool>
+  description : Option<String>
+  owner_ids : Option<Vec<Uuid>>
+}
+
+#[derive(Clone, Deserialize, Serialize, Debug)]
+pub struct CreateStoryLink {
+  object_id : u32
+  subject_id : u32
+  verb : types::StoryLinkType
+}

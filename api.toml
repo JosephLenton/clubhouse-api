@@ -3,6 +3,7 @@
 name = "Clubhouse"
 api_docs_url = "https://clubhouse.io/api/rest/v2/"
 url = "https://api.clubhouse.io/api/v2"
+extra_crates = [ "uuid", "chrono" ]
 
 [domain.query]
 token = "String"
@@ -11,13 +12,13 @@ token = "String"
 path = "categories"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Categories"
-returns = "Vec<crate::types::Category>"
+returns = "crate::types::Vec<Category>"
 
 [[url]]
 path = "categories"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Category"
-body = "__TODO__"
+body = "crate::types::CreateCategory"
 returns = "crate::types::Category"
 
 [[url]]
@@ -30,7 +31,7 @@ returns = "crate::types::Category"
 path = "categories/<category_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Category"
-body = "__TODO__"
+body = "crate::types::UpdateCategory"
 returns = "crate::types::Category"
 
 [[url]]
@@ -48,13 +49,13 @@ returns = "crate::types::EpicWorkflow"
 path = "epics"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Epics"
-returns = "Vec<crate::types::Epic>"
+returns = "crate::types::Vec<Epic>"
 
 [[url]]
 path = "epics"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Epic"
-body = "__TODO__"
+body = "crate::types::CreateEpic"
 returns = "crate::types::Epic"
 
 [[url]]
@@ -67,7 +68,7 @@ returns = "crate::types::Epic"
 path = "epics/<epic_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Epic"
-body = "__TODO__"
+body = "crate::types::UpdateEpic"
 returns = "crate::types::Epic"
 
 [[url]]
@@ -79,13 +80,13 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Epic"
 path = "epics/<epic_public_id:String>/comments"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Epic-Comments"
-returns = "Vec<crate::types::ThreadedComment>"
+returns = "crate::types::Vec<ThreadedComment>"
 
 [[url]]
 path = "epics/<epic_public_id:String>/comments"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Epic-Comment"
-body = "__TODO__"
+body = "crate::types::CreateEpicComment"
 returns = "crate::types::ThreadedComment"
 
 [[url]]
@@ -98,14 +99,14 @@ returns = "crate::types::ThreadedComment"
 path = "epics/<epic_public_id:String>/comments/<comment_public_id:String>"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Epic-Comment-Comment"
-body = "__TODO__"
+body = "crate::types::CreateEpicCommentComment"
 returns = "crate::types::ThreadedComment"
 
 [[url]]
 path = "epics/<epic_public_id:String>/comments/<comment_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Epic-Comment"
-body = "__TODO__"
+body = "crate::types::UpdateEpicComment"
 returns = "crate::types::ThreadedComment"
 
 [[url]]
@@ -117,7 +118,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Epic-Comment"
 path = "files"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Files"
-returns = "Vec<crate::types::File>"
+returns = "crate::types::Vec<File>"
 
 [[url]]
 path = "files/<file_public_id:String>"
@@ -129,7 +130,7 @@ returns = "crate::types::File"
 path = "files/<file_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-File"
-body = "__TODO__"
+body = "crate::types::UpdateFile"
 returns = "crate::types::File"
 
 [[url]]
@@ -141,20 +142,19 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-File"
 path = "files"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Upload-Files"
-body = "__TODO__"
-returns = "Vec<crate::types::File>"
+returns = "crate::types::Vec<File>"
 
 [[url]]
 path = "labels"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Labels"
-returns = "Vec<crate::types::Label>"
+returns = "crate::types::Vec<Label>"
 
 [[url]]
 path = "labels"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Label"
-body = "__TODO__"
+body = "crate::types::CreateLabel"
 returns = "crate::types::Label"
 
 [[url]]
@@ -167,7 +167,7 @@ returns = "crate::types::Label"
 path = "labels/<label_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Label"
-body = "__TODO__"
+body = "crate::types::UpdateLabel"
 returns = "crate::types::Label"
 
 [[url]]
@@ -179,13 +179,13 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Label"
 path = "linked-files"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Linked-Files"
-returns = "Vec<crate::types::LinkedFile>"
+returns = "crate::types::Vec<LinkedFile>"
 
 [[url]]
 path = "linked-files"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Linked-File"
-body = "__TODO__"
+body = "crate::types::CreateLinkedFile"
 returns = "crate::types::LinkedFile"
 
 [[url]]
@@ -198,7 +198,7 @@ returns = "crate::types::LinkedFile"
 path = "linked-files/<linked_file_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Linked-File"
-body = "__TODO__"
+body = "crate::types::UpdateLinkedFile"
 returns = "crate::types::LinkedFile"
 
 [[url]]
@@ -210,7 +210,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Linked-File"
 path = "members"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Members"
-returns = "Vec<crate::types::Member>"
+returns = "crate::types::Vec<Member>"
 
 [[url]]
 path = "members/<member_public_id:String>"
@@ -222,13 +222,13 @@ returns = "crate::types::Member"
 path = "milestones"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Milestones"
-returns = "Vec<crate::types::Milestone>"
+returns = "crate::types::Vec<Milestone>"
 
 [[url]]
 path = "milestones"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Milestone"
-body = "__TODO__"
+body = "crate::types::CreateMilestone"
 returns = "crate::types::Milestone"
 
 [[url]]
@@ -241,7 +241,7 @@ returns = "crate::types::Milestone"
 path = "milestones/<milestone_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Milestone"
-body = "__TODO__"
+body = "crate::types::UpdateMilestone"
 returns = "crate::types::Milestone"
 
 [[url]]
@@ -253,13 +253,13 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Milestone"
 path = "projects"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Projects"
-returns = "Vec<crate::types::Project>"
+returns = "crate::types::Vec<Project>"
 
 [[url]]
 path = "projects"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Project"
-body = "__TODO__"
+body = "crate::types::CreateProject"
 returns = "crate::types::Project"
 
 [[url]]
@@ -272,7 +272,7 @@ returns = "crate::types::Project"
 path = "projects/<project_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Project"
-body = "__TODO__"
+body = "crate::types::UpdateProject"
 returns = "crate::types::Project"
 
 [[url]]
@@ -284,13 +284,13 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Project"
 path = "projects/<project_public_id:String>/stories"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Stories"
-returns = "Vec<crate::types::StorySlim>"
+returns = "crate::types::Vec<StorySlim>"
 
 [[url]]
 path = "repositories"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Repositories"
-returns = "Vec<crate::types::Repository>"
+returns = "crate::types::Vec<Repository>"
 
 [[url]]
 path = "repositories/<repo_public_id:String>"
@@ -302,33 +302,35 @@ returns = "crate::types::Repository"
 path = "search/stories"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Search-Stories"
+body = "crate::types::SearchStories"
 returns = "crate::types::SearchResults"
 
 [[url]]
 path = "stories"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Story"
-body = "__TODO__"
+body = "crate::types::CreateStory"
 returns = "crate::types::Story"
 
 [[url]]
 path = "stories/bulk"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Multiple-Stories"
-body = "__TODO__"
-returns = "Vec<crate::types::StorySlim>"
+body = "crate::types::CreateMultipleStories"
+returns = "crate::types::Vec<StorySlim>"
 
 [[url]]
 path = "stories/bulk"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Multiple-Stories"
-body = "__TODO__"
-returns = "Vec<crate::types::StorySlim>"
+body = "crate::types::UpdateMultipleStories"
+returns = "crate::types::Vec<StorySlim>"
 
 [[url]]
 path = "stories/bulk"
 method = "Delete"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Multiple-Stories"
+body = "crate::types::DeleteMultipleStories"
 
 [[url]]
 path = "stories/<story_public_id:String>"
@@ -340,7 +342,7 @@ returns = "crate::types::Story"
 path = "stories/<story_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Story"
-body = "__TODO__"
+body = "crate::types::UpdateStory"
 returns = "crate::types::Story"
 
 [[url]]
@@ -352,7 +354,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Story"
 path = "stories/<story_public_id:String>/comments"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Comment"
-body = "__TODO__"
+body = "crate::types::CreateComment"
 returns = "crate::types::Comment"
 
 [[url]]
@@ -365,7 +367,7 @@ returns = "crate::types::Comment"
 path = "stories/<story_public_id:String>/comments/<comment_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Comment"
-body = "__TODO__"
+body = "crate::types::UpdateComment"
 returns = "crate::types::Comment"
 
 [[url]]
@@ -377,7 +379,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Comment"
 path = "stories/<story_public_id:String>/tasks"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Task"
-body = "__TODO__"
+body = "crate::types::CreateTask"
 returns = "crate::types::Task"
 
 [[url]]
@@ -390,7 +392,7 @@ returns = "crate::types::Task"
 path = "stories/<story_public_id:String>/tasks/<task_public_id:String>"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Task"
-body = "__TODO__"
+body = "crate::types::UpdateTask"
 returns = "crate::types::Task"
 
 [[url]]
@@ -402,7 +404,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Task"
 path = "story-links"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Story-Link"
-body = "__TODO__"
+body = "crate::types::CreateStoryLink"
 returns = "crate::types::StoryLink"
 
 [[url]]
@@ -420,7 +422,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Story-Link"
 path = "teams"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Teams"
-returns = "Vec<crate::types::Team>"
+returns = "crate::types::Vec<Team>"
 
 [[url]]
 path = "teams/<team_public_id:String>"
@@ -432,4 +434,4 @@ returns = "crate::types::Team"
 path = "workflows"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Workflows"
-returns = "Vec<crate::types::Workflow>"
+returns = "crate::types::Vec<Workflow>"

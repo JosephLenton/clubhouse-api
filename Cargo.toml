@@ -7,6 +7,6 @@ edition = "2018"
 [dependencies]
 serde = "1.0.79"
 serde_derive = "1.0.79"
-burgundy = "0.2.8"    # Library for building API service bindings
+burgundy = "0.3.0"    # Library for building API service bindings
 chrono = { version = "0.4.6", features = ["serde"] }
 uuid = { version = "0.7.1", features = ["serde"] }
