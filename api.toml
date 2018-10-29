@@ -12,7 +12,7 @@ token = "String"
 path = "categories"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Categories"
-returns = "crate::types::Vec<Category>"
+returns = "Vec<crate::types::Category>"
 
 [[url]]
 path = "categories"
@@ -49,7 +49,7 @@ returns = "crate::types::EpicWorkflow"
 path = "epics"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Epics"
-returns = "crate::types::Vec<Epic>"
+returns = "Vec<crate::types::Epic>"
 
 [[url]]
 path = "epics"
@@ -80,7 +80,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Epic"
 path = "epics/<epic_public_id:String>/comments"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Epic-Comments"
-returns = "crate::types::Vec<ThreadedComment>"
+returns = "Vec<crate::types::ThreadedComment>"
 
 [[url]]
 path = "epics/<epic_public_id:String>/comments"
@@ -118,7 +118,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Epic-Comment"
 path = "files"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Files"
-returns = "crate::types::Vec<File>"
+returns = "Vec<crate::types::File>"
 
 [[url]]
 path = "files/<file_public_id:String>"
@@ -142,13 +142,13 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-File"
 path = "files"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Upload-Files"
-returns = "crate::types::Vec<File>"
+returns = "Vec<crate::types::File>"
 
 [[url]]
 path = "labels"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Labels"
-returns = "crate::types::Vec<Label>"
+returns = "Vec<crate::types::Label>"
 
 [[url]]
 path = "labels"
@@ -179,7 +179,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Label"
 path = "linked-files"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Linked-Files"
-returns = "crate::types::Vec<LinkedFile>"
+returns = "Vec<crate::types::LinkedFile>"
 
 [[url]]
 path = "linked-files"
@@ -210,7 +210,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Linked-File"
 path = "members"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Members"
-returns = "crate::types::Vec<Member>"
+returns = "Vec<crate::types::Member>"
 
 [[url]]
 path = "members/<member_public_id:String>"
@@ -222,7 +222,7 @@ returns = "crate::types::Member"
 path = "milestones"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Milestones"
-returns = "crate::types::Vec<Milestone>"
+returns = "Vec<crate::types::Milestone>"
 
 [[url]]
 path = "milestones"
@@ -253,7 +253,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Milestone"
 path = "projects"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Projects"
-returns = "crate::types::Vec<Project>"
+returns = "Vec<crate::types::Project>"
 
 [[url]]
 path = "projects"
@@ -284,13 +284,13 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Project"
 path = "projects/<project_public_id:String>/stories"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Stories"
-returns = "crate::types::Vec<StorySlim>"
+returns = "Vec<crate::types::StorySlim>"
 
 [[url]]
 path = "repositories"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Repositories"
-returns = "crate::types::Vec<Repository>"
+returns = "Vec<crate::types::Repository>"
 
 [[url]]
 path = "repositories/<repo_public_id:String>"
@@ -317,14 +317,14 @@ path = "stories/bulk"
 method = "Post"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Create-Multiple-Stories"
 body = "crate::types::CreateMultipleStories"
-returns = "crate::types::Vec<StorySlim>"
+returns = "Vec<crate::types::StorySlim>"
 
 [[url]]
 path = "stories/bulk"
 method = "Put"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#Update-Multiple-Stories"
 body = "crate::types::UpdateMultipleStories"
-returns = "crate::types::Vec<StorySlim>"
+returns = "Vec<crate::types::StorySlim>"
 
 [[url]]
 path = "stories/bulk"
@@ -422,7 +422,7 @@ api_docs_url = "https://clubhouse.io/api/rest/v2/#Delete-Story-Link"
 path = "teams"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Teams"
-returns = "crate::types::Vec<Team>"
+returns = "Vec<crate::types::Team>"
 
 [[url]]
 path = "teams/<team_public_id:String>"
@@ -434,4 +434,4 @@ returns = "crate::types::Team"
 path = "workflows"
 method = "Get"
 api_docs_url = "https://clubhouse.io/api/rest/v2/#List-Workflows"
-returns = "crate::types::Vec<Workflow>"
+returns = "Vec<crate::types::Workflow>"
