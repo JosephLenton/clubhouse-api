@@ -2,8 +2,8 @@ extern crate burgundy;
 extern crate serde;
 #[macro_use]
 extern crate serde_derive;
-extern crate chrono;
-extern crate uuid;
+pub extern crate chrono;
+pub extern crate uuid;
 pub mod types;
 pub use burgundy::Error;
 pub use burgundy::Result;
