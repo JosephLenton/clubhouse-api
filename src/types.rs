@@ -419,7 +419,7 @@ pub struct Story {
     pub started_at: Option<DateTime<Utc>>,
     pub started_at_override: Option<DateTime<Utc>>,
     pub story_links: Vec<TypedStoryLink>,
-    pub story_type: String,
+    pub story_type: StoryType,
     pub tasks: Vec<Task>,
     pub updated_at: Option<DateTime<Utc>>,
     pub workflow_state_id: u64,

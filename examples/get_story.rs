@@ -29,6 +29,7 @@ pub fn main() -> Result<(), clubhouse_api::Error> {
 
     println!("");
     println!("# ch{} {}", story.id, story.name);
+    println!("{}", story.app_url);
     if story.labels.len() > 0 {
         let label_names: Vec<&str> = story.labels.iter().map(|l| l.name.as_str()).collect();
         let label_str = label_names.join(", ");

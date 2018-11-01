@@ -1,6 +1,6 @@
 [package]
 name = "clubhouse-api"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["joseph.lenton@askattest.com <joseph.lenton@askattest.com>"]
 edition = "2018"
 description = "Rust bindings to Clubhouse REST v2 API"
