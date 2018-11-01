@@ -4,7 +4,7 @@ pub struct ClubhouseGetMilestoneMilestonePublicId {
 
 impl ClubhouseGetMilestoneMilestonePublicId {
     /// See https://clubhouse.io/api/rest/v2/#Get-Milestone
-    pub fn run(self) -> burgundy::Result<crate::types::Milestone> {
+    pub fn run(self) -> crate::Result<crate::types::Milestone> {
         self.path
             .execute_as_json::<(), crate::types::Milestone>(None)
     }

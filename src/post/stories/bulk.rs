@@ -7,7 +7,7 @@ impl ClubhousePostStoryBulk {
     pub fn run(
         self,
         body: crate::types::CreateMultipleStories,
-    ) -> burgundy::Result<Vec<crate::types::StorySlim>> {
+    ) -> crate::Result<Vec<crate::types::StorySlim>> {
         self.path
             .execute_as_json::<crate::types::CreateMultipleStories, Vec<crate::types::StorySlim>>(
                 Some(&body),

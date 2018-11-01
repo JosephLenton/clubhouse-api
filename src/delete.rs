@@ -1,42 +1,30 @@
-mod milestones;
-pub use self::milestones::ClubhouseDeleteMilestone;
-mod categories;
+pub mod categories;
 pub use self::categories::ClubhouseDeleteCategory;
-mod stories;
-pub use self::stories::ClubhouseDeleteStory;
-mod linked_files;
+pub mod linked_files;
 pub use self::linked_files::ClubhouseDeleteLinkedFile;
-mod story_links;
+pub mod story_links;
 pub use self::story_links::ClubhouseDeleteStoryLink;
-mod files;
+pub mod files;
 pub use self::files::ClubhouseDeleteFile;
-mod epics;
+pub mod epics;
 pub use self::epics::ClubhouseDeleteEpic;
-mod projects;
+pub mod projects;
 pub use self::projects::ClubhouseDeleteProject;
-mod labels;
+pub mod labels;
 pub use self::labels::ClubhouseDeleteLabel;
+pub mod milestones;
+pub use self::milestones::ClubhouseDeleteMilestone;
+pub mod stories;
+pub use self::stories::ClubhouseDeleteStory;
 
 pub struct ClubhouseDelete {
     pub(crate) path: burgundy::Path,
 }
 
 impl ClubhouseDelete {
-    pub fn milestones(self) -> self::milestones::ClubhouseDeleteMilestone {
-        self::milestones::ClubhouseDeleteMilestone {
-            path: self.path.push(&"milestones"),
-        }
-    }
-
     pub fn categories(self) -> self::categories::ClubhouseDeleteCategory {
         self::categories::ClubhouseDeleteCategory {
             path: self.path.push(&"categories"),
-        }
-    }
-
-    pub fn stories(self) -> self::stories::ClubhouseDeleteStory {
-        self::stories::ClubhouseDeleteStory {
-            path: self.path.push(&"stories"),
         }
     }
 
@@ -73,6 +61,18 @@ impl ClubhouseDelete {
     pub fn labels(self) -> self::labels::ClubhouseDeleteLabel {
         self::labels::ClubhouseDeleteLabel {
             path: self.path.push(&"labels"),
+        }
+    }
+
+    pub fn milestones(self) -> self::milestones::ClubhouseDeleteMilestone {
+        self::milestones::ClubhouseDeleteMilestone {
+            path: self.path.push(&"milestones"),
+        }
+    }
+
+    pub fn stories(self) -> self::stories::ClubhouseDeleteStory {
+        self::stories::ClubhouseDeleteStory {
+            path: self.path.push(&"stories"),
         }
     }
 }

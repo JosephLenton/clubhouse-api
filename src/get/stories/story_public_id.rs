@@ -1,6 +1,6 @@
-mod tasks;
+pub mod tasks;
 pub use self::tasks::ClubhouseGetStoryStoryPublicIdTask;
-mod comments;
+pub mod comments;
 pub use self::comments::ClubhouseGetStoryStoryPublicIdComment;
 
 pub struct ClubhouseGetStoryStoryPublicId {
@@ -21,7 +21,7 @@ impl ClubhouseGetStoryStoryPublicId {
     }
 
     /// See https://clubhouse.io/api/rest/v2/#Get-Story
-    pub fn run(self) -> burgundy::Result<crate::types::Story> {
+    pub fn run(self) -> crate::Result<crate::types::Story> {
         self.path.execute_as_json::<(), crate::types::Story>(None)
     }
 }

@@ -1,6 +1,6 @@
-mod story_public_id;
+pub mod story_public_id;
 pub use self::story_public_id::ClubhousePutStoryStoryPublicId;
-mod bulk;
+pub mod bulk;
 pub use self::bulk::ClubhousePutStoryBulk;
 
 pub struct ClubhousePutStory {
@@ -10,7 +10,7 @@ pub struct ClubhousePutStory {
 impl ClubhousePutStory {
     pub fn story_public_id(
         self,
-        story_public_id: String,
+        story_public_id: u64,
     ) -> self::story_public_id::ClubhousePutStoryStoryPublicId {
         self::story_public_id::ClubhousePutStoryStoryPublicId {
             path: self.path.push(&story_public_id),

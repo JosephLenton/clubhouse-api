@@ -1,4 +1,4 @@
-mod label_public_id;
+pub mod label_public_id;
 pub use self::label_public_id::ClubhouseDeleteLabelLabelPublicId;
 
 pub struct ClubhouseDeleteLabel {
@@ -8,7 +8,7 @@ pub struct ClubhouseDeleteLabel {
 impl ClubhouseDeleteLabel {
     pub fn label_public_id(
         self,
-        label_public_id: String,
+        label_public_id: u64,
     ) -> self::label_public_id::ClubhouseDeleteLabelLabelPublicId {
         self::label_public_id::ClubhouseDeleteLabelLabelPublicId {
             path: self.path.push(&label_public_id),

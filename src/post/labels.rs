@@ -4,7 +4,7 @@ pub struct ClubhousePostLabel {
 
 impl ClubhousePostLabel {
     /// See https://clubhouse.io/api/rest/v2/#Create-Label
-    pub fn run(self, body: crate::types::CreateLabel) -> burgundy::Result<crate::types::Label> {
+    pub fn run(self, body: crate::types::CreateLabel) -> crate::Result<crate::types::Label> {
         self.path
             .execute_as_json::<crate::types::CreateLabel, crate::types::Label>(Some(&body))
     }

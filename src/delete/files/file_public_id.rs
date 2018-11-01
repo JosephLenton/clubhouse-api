@@ -4,7 +4,7 @@ pub struct ClubhouseDeleteFileFilePublicId {
 
 impl ClubhouseDeleteFileFilePublicId {
     /// See https://clubhouse.io/api/rest/v2/#Delete-File
-    pub fn run(self) -> burgundy::Result<()> {
+    pub fn run(self) -> crate::Result<()> {
         self.path.execute_as_json::<(), ()>(None)
     }
 }

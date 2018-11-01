@@ -1,4 +1,4 @@
-mod stories;
+pub mod stories;
 pub use self::stories::ClubhouseGetSearchStory;
 
 pub struct ClubhouseGetSearch {

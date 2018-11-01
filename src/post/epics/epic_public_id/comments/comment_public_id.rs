@@ -7,7 +7,7 @@ impl ClubhousePostEpicEpicPublicIdCommentCommentPublicId {
     pub fn run(
         self,
         body: crate::types::CreateEpicCommentComment,
-    ) -> burgundy::Result<crate::types::ThreadedComment> {
+    ) -> crate::Result<crate::types::ThreadedComment> {
         self.path
         .execute_as_json::<crate::types::CreateEpicCommentComment, crate::types::ThreadedComment>(Some(&body))
     }

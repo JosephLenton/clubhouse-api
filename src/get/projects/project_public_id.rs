@@ -1,4 +1,4 @@
-mod stories;
+pub mod stories;
 pub use self::stories::ClubhouseGetProjectProjectPublicIdStory;
 
 pub struct ClubhouseGetProjectProjectPublicId {
@@ -13,7 +13,7 @@ impl ClubhouseGetProjectProjectPublicId {
     }
 
     /// See https://clubhouse.io/api/rest/v2/#Get-Project
-    pub fn run(self) -> burgundy::Result<crate::types::Project> {
+    pub fn run(self) -> crate::Result<crate::types::Project> {
         self.path.execute_as_json::<(), crate::types::Project>(None)
     }
 }

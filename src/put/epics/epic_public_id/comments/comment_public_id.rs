@@ -7,7 +7,7 @@ impl ClubhousePutEpicEpicPublicIdCommentCommentPublicId {
     pub fn run(
         self,
         body: crate::types::UpdateEpicComment,
-    ) -> burgundy::Result<crate::types::ThreadedComment> {
+    ) -> crate::Result<crate::types::ThreadedComment> {
         self.path
             .execute_as_json::<crate::types::UpdateEpicComment, crate::types::ThreadedComment>(
                 Some(&body),

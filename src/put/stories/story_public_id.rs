@@ -1,6 +1,6 @@
-mod tasks;
+pub mod tasks;
 pub use self::tasks::ClubhousePutStoryStoryPublicIdTask;
-mod comments;
+pub mod comments;
 pub use self::comments::ClubhousePutStoryStoryPublicIdComment;
 
 pub struct ClubhousePutStoryStoryPublicId {
@@ -21,7 +21,7 @@ impl ClubhousePutStoryStoryPublicId {
     }
 
     /// See https://clubhouse.io/api/rest/v2/#Update-Story
-    pub fn run(self, body: crate::types::UpdateStory) -> burgundy::Result<crate::types::Story> {
+    pub fn run(self, body: crate::types::UpdateStory) -> crate::Result<crate::types::Story> {
         self.path
             .execute_as_json::<crate::types::UpdateStory, crate::types::Story>(Some(&body))
     }

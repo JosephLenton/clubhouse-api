@@ -4,16 +4,17 @@ extern crate serde;
 extern crate serde_derive;
 extern crate chrono;
 extern crate uuid;
-mod post;
-pub use self::post::ClubhousePost;
-mod put;
-pub use self::put::ClubhousePut;
+pub mod types;
+pub use burgundy::Error;
+pub use burgundy::Result;
 mod get;
 pub use self::get::ClubhouseGet;
+mod put;
+pub use self::put::ClubhousePut;
 mod delete;
 pub use self::delete::ClubhouseDelete;
-
-pub mod types;
+mod post;
+pub use self::post::ClubhousePost;
 
 /// See https://clubhouse.io/api/rest/v2/
 pub struct Clubhouse {
@@ -21,7 +22,7 @@ pub struct Clubhouse {
 }
 
 impl Clubhouse {
-    pub fn new(token: String) -> Self {
+    pub fn new(token: &str) -> Self {
         let mut domain = burgundy::Domain::new(&"https://api.clubhouse.io/api/v2");
 
         let user_agent = format!("Clubhouse (Rust, Burgundy)/{}", env!("CARGO_PKG_VERSION"));
@@ -31,9 +32,9 @@ impl Clubhouse {
         Self { domain }
     }
 
-    pub fn post(&self) -> self::post::ClubhousePost {
-        self::post::ClubhousePost {
-            path: self.domain.post(),
+    pub fn get(&self) -> self::get::ClubhouseGet {
+        self::get::ClubhouseGet {
+            path: self.domain.get(),
         }
     }
 
@@ -43,15 +44,15 @@ impl Clubhouse {
         }
     }
 
-    pub fn get(&self) -> self::get::ClubhouseGet {
-        self::get::ClubhouseGet {
-            path: self.domain.get(),
-        }
-    }
-
     pub fn delete(&self) -> self::delete::ClubhouseDelete {
         self::delete::ClubhouseDelete {
             path: self.domain.delete(),
+        }
+    }
+
+    pub fn post(&self) -> self::post::ClubhousePost {
+        self::post::ClubhousePost {
+            path: self.domain.post(),
         }
     }
 }

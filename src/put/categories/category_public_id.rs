@@ -4,10 +4,7 @@ pub struct ClubhousePutCategoryCategoryPublicId {
 
 impl ClubhousePutCategoryCategoryPublicId {
     /// See https://clubhouse.io/api/rest/v2/#Update-Category
-    pub fn run(
-        self,
-        body: crate::types::UpdateCategory,
-    ) -> burgundy::Result<crate::types::Category> {
+    pub fn run(self, body: crate::types::UpdateCategory) -> crate::Result<crate::types::Category> {
         self.path
             .execute_as_json::<crate::types::UpdateCategory, crate::types::Category>(Some(&body))
     }

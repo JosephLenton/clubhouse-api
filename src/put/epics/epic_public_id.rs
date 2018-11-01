@@ -1,4 +1,4 @@
-mod comments;
+pub mod comments;
 pub use self::comments::ClubhousePutEpicEpicPublicIdComment;
 
 pub struct ClubhousePutEpicEpicPublicId {
@@ -13,7 +13,7 @@ impl ClubhousePutEpicEpicPublicId {
     }
 
     /// See https://clubhouse.io/api/rest/v2/#Update-Epic
-    pub fn run(self, body: crate::types::UpdateEpic) -> burgundy::Result<crate::types::Epic> {
+    pub fn run(self, body: crate::types::UpdateEpic) -> crate::Result<crate::types::Epic> {
         self.path
             .execute_as_json::<crate::types::UpdateEpic, crate::types::Epic>(Some(&body))
     }

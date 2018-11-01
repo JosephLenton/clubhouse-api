@@ -4,7 +4,7 @@ pub struct ClubhouseGetStoryStoryPublicIdCommentCommentPublicId {
 
 impl ClubhouseGetStoryStoryPublicIdCommentCommentPublicId {
     /// See https://clubhouse.io/api/rest/v2/#Get-Comment
-    pub fn run(self) -> burgundy::Result<crate::types::Comment> {
+    pub fn run(self) -> crate::Result<crate::types::Comment> {
         self.path.execute_as_json::<(), crate::types::Comment>(None)
     }
 }

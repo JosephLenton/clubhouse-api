@@ -1,4 +1,4 @@
-mod comment_public_id;
+pub mod comment_public_id;
 pub use self::comment_public_id::ClubhousePutStoryStoryPublicIdCommentCommentPublicId;
 
 pub struct ClubhousePutStoryStoryPublicIdComment {
@@ -8,7 +8,7 @@ pub struct ClubhousePutStoryStoryPublicIdComment {
 impl ClubhousePutStoryStoryPublicIdComment {
     pub fn comment_public_id(
         self,
-        comment_public_id: String,
+        comment_public_id: u64,
     ) -> self::comment_public_id::ClubhousePutStoryStoryPublicIdCommentCommentPublicId {
         self::comment_public_id::ClubhousePutStoryStoryPublicIdCommentCommentPublicId {
             path: self.path.push(&comment_public_id),

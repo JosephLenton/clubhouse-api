@@ -1,4 +1,4 @@
-mod epic_public_id;
+pub mod epic_public_id;
 pub use self::epic_public_id::ClubhouseGetEpicEpicPublicId;
 
 pub struct ClubhouseGetEpic {
@@ -8,7 +8,7 @@ pub struct ClubhouseGetEpic {
 impl ClubhouseGetEpic {
     pub fn epic_public_id(
         self,
-        epic_public_id: String,
+        epic_public_id: u64,
     ) -> self::epic_public_id::ClubhouseGetEpicEpicPublicId {
         self::epic_public_id::ClubhouseGetEpicEpicPublicId {
             path: self.path.push(&epic_public_id),
@@ -16,7 +16,7 @@ impl ClubhouseGetEpic {
     }
 
     /// See https://clubhouse.io/api/rest/v2/#List-Epics
-    pub fn run(self) -> burgundy::Result<Vec<crate::types::Epic>> {
+    pub fn run(self) -> crate::Result<Vec<crate::types::Epic>> {
         self.path
             .execute_as_json::<(), Vec<crate::types::Epic>>(None)
     }

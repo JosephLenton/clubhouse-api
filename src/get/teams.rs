@@ -1,4 +1,4 @@
-mod team_public_id;
+pub mod team_public_id;
 pub use self::team_public_id::ClubhouseGetTeamTeamPublicId;
 
 pub struct ClubhouseGetTeam {
@@ -8,7 +8,7 @@ pub struct ClubhouseGetTeam {
 impl ClubhouseGetTeam {
     pub fn team_public_id(
         self,
-        team_public_id: String,
+        team_public_id: u64,
     ) -> self::team_public_id::ClubhouseGetTeamTeamPublicId {
         self::team_public_id::ClubhouseGetTeamTeamPublicId {
             path: self.path.push(&team_public_id),
@@ -16,7 +16,7 @@ impl ClubhouseGetTeam {
     }
 
     /// See https://clubhouse.io/api/rest/v2/#List-Teams
-    pub fn run(self) -> burgundy::Result<Vec<crate::types::Team>> {
+    pub fn run(self) -> crate::Result<Vec<crate::types::Team>> {
         self.path
             .execute_as_json::<(), Vec<crate::types::Team>>(None)
     }

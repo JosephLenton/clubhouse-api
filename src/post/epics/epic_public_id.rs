@@ -1,4 +1,4 @@
-mod comments;
+pub mod comments;
 pub use self::comments::ClubhousePostEpicEpicPublicIdComment;
 
 pub struct ClubhousePostEpicEpicPublicId {

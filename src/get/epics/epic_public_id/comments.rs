@@ -1,4 +1,4 @@
-mod comment_public_id;
+pub mod comment_public_id;
 pub use self::comment_public_id::ClubhouseGetEpicEpicPublicIdCommentCommentPublicId;
 
 pub struct ClubhouseGetEpicEpicPublicIdComment {
@@ -8,7 +8,7 @@ pub struct ClubhouseGetEpicEpicPublicIdComment {
 impl ClubhouseGetEpicEpicPublicIdComment {
     pub fn comment_public_id(
         self,
-        comment_public_id: String,
+        comment_public_id: u64,
     ) -> self::comment_public_id::ClubhouseGetEpicEpicPublicIdCommentCommentPublicId {
         self::comment_public_id::ClubhouseGetEpicEpicPublicIdCommentCommentPublicId {
             path: self.path.push(&comment_public_id),
@@ -16,7 +16,7 @@ impl ClubhouseGetEpicEpicPublicIdComment {
     }
 
     /// See https://clubhouse.io/api/rest/v2/#List-Epic-Comments
-    pub fn run(self) -> burgundy::Result<Vec<crate::types::ThreadedComment>> {
+    pub fn run(self) -> crate::Result<Vec<crate::types::ThreadedComment>> {
         self.path
             .execute_as_json::<(), Vec<crate::types::ThreadedComment>>(None)
     }

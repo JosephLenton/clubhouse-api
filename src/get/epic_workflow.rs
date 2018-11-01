@@ -4,7 +4,7 @@ pub struct ClubhouseGetEpicWorkflow {
 
 impl ClubhouseGetEpicWorkflow {
     /// See https://clubhouse.io/api/rest/v2/#Get-Epic-Workflow
-    pub fn run(self) -> burgundy::Result<crate::types::EpicWorkflow> {
+    pub fn run(self) -> crate::Result<crate::types::EpicWorkflow> {
         self.path
             .execute_as_json::<(), crate::types::EpicWorkflow>(None)
     }

@@ -1,4 +1,4 @@
-mod file_public_id;
+pub mod file_public_id;
 pub use self::file_public_id::ClubhousePutFileFilePublicId;
 
 pub struct ClubhousePutFile {
@@ -8,7 +8,7 @@ pub struct ClubhousePutFile {
 impl ClubhousePutFile {
     pub fn file_public_id(
         self,
-        file_public_id: String,
+        file_public_id: u64,
     ) -> self::file_public_id::ClubhousePutFileFilePublicId {
         self::file_public_id::ClubhousePutFileFilePublicId {
             path: self.path.push(&file_public_id),

@@ -4,7 +4,7 @@ pub struct ClubhouseGetLabelLabelPublicId {
 
 impl ClubhouseGetLabelLabelPublicId {
     /// See https://clubhouse.io/api/rest/v2/#Get-Label
-    pub fn run(self) -> burgundy::Result<crate::types::Label> {
+    pub fn run(self) -> crate::Result<crate::types::Label> {
         self.path.execute_as_json::<(), crate::types::Label>(None)
     }
 }

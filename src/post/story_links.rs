@@ -7,7 +7,7 @@ impl ClubhousePostStoryLink {
     pub fn run(
         self,
         body: crate::types::CreateStoryLink,
-    ) -> burgundy::Result<crate::types::StoryLink> {
+    ) -> crate::Result<crate::types::StoryLink> {
         self.path
             .execute_as_json::<crate::types::CreateStoryLink, crate::types::StoryLink>(Some(&body))
     }

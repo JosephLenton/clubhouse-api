@@ -7,7 +7,7 @@ impl ClubhousePutMilestoneMilestonePublicId {
     pub fn run(
         self,
         body: crate::types::UpdateMilestone,
-    ) -> burgundy::Result<crate::types::Milestone> {
+    ) -> crate::Result<crate::types::Milestone> {
         self.path
             .execute_as_json::<crate::types::UpdateMilestone, crate::types::Milestone>(Some(&body))
     }

@@ -1,4 +1,4 @@
-mod task_public_id;
+pub mod task_public_id;
 pub use self::task_public_id::ClubhouseDeleteStoryStoryPublicIdTaskTaskPublicId;
 
 pub struct ClubhouseDeleteStoryStoryPublicIdTask {
@@ -8,7 +8,7 @@ pub struct ClubhouseDeleteStoryStoryPublicIdTask {
 impl ClubhouseDeleteStoryStoryPublicIdTask {
     pub fn task_public_id(
         self,
-        task_public_id: String,
+        task_public_id: u64,
     ) -> self::task_public_id::ClubhouseDeleteStoryStoryPublicIdTaskTaskPublicId {
         self::task_public_id::ClubhouseDeleteStoryStoryPublicIdTaskTaskPublicId {
             path: self.path.push(&task_public_id),

@@ -4,7 +4,7 @@ pub struct ClubhouseDeleteMilestoneMilestonePublicId {
 
 impl ClubhouseDeleteMilestoneMilestonePublicId {
     /// See https://clubhouse.io/api/rest/v2/#Delete-Milestone
-    pub fn run(self) -> burgundy::Result<()> {
+    pub fn run(self) -> crate::Result<()> {
         self.path.execute_as_json::<(), ()>(None)
     }
 }

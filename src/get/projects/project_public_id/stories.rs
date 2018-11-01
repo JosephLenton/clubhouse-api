@@ -4,7 +4,7 @@ pub struct ClubhouseGetProjectProjectPublicIdStory {
 
 impl ClubhouseGetProjectProjectPublicIdStory {
     /// See https://clubhouse.io/api/rest/v2/#List-Stories
-    pub fn run(self) -> burgundy::Result<Vec<crate::types::StorySlim>> {
+    pub fn run(self) -> crate::Result<Vec<crate::types::StorySlim>> {
         self.path
             .execute_as_json::<(), Vec<crate::types::StorySlim>>(None)
     }
