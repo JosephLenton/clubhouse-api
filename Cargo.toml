@@ -1,6 +1,6 @@
 [package]
 name = "clubhouse-api"
-version = "1.1.0"
+version = "1.1.1"
 authors = ["joseph.lenton@askattest.com <joseph.lenton@askattest.com>"]
 edition = "2018"
 description = "Rust bindings to Clubhouse REST v2 API"
@@ -10,7 +10,7 @@ license = "MIT"
 [dependencies]
 serde = "1.0.80"
 serde_derive = "1.0.80"
-burgundy = "0.3.2"    # Library for building API service bindings
+burgundy = "0.3.3"    # Library for building API service bindings
 chrono = { version = "0.4.6", features = ["serde"] }
 uuid = { version = "0.7.1", features = ["serde"] }
 
